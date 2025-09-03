@@ -3,6 +3,12 @@ A simple menubar app that allows you to control an Apple TV from your desktop
 
  ![What this application looks like when running in either light or dark mode](screenshot_new.png)
 
+## New in v1.5.0
+- **Power Button**: Press 'Z' to put your Apple TV to sleep
+- **Siri Button**: Press 'S' to activate Siri voice control  
+- **Improved Play/Pause**: Enhanced functionality works seamlessly with any current app
+- **Better UI**: Added tooltips and improved button layout
+
 
 
 ## Installation 
@@ -17,6 +23,7 @@ macOS and Windows versions can be downloaded from here: https://github.com/bshar
  1. Keys are mapped to the keyboard when the application is open (pressing return or enter on the keyboard for select, delete for Menu, etc).
  2. Press `Option`, or `Alt` on Windows, to see what the characters are mapped to when the application is open.
  3. Long press buttons now works to simulate long presses on the remote
+ 4. **New**: Press 'Z' for Power/Sleep and 'S' for Siri functionality
  
  <p align="center">
   <img src="buttonpress.gif" alt="long press button animation" width="200"/>
