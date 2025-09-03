@@ -51,7 +51,9 @@ const ws_keymap = {
     "+": "volume_up",
     "=": "volume_up",
     "-": "volume_down",
-    "_": "volume_down"
+    "_": "volume_down",
+    "z": "suspend",
+    "s": "siri"
 }
 
 const keymap = {
@@ -85,7 +87,9 @@ const niceButtons = {
     "TV": "Tv",
     "play/pause": "play_pause",
     'Lower Volume': 'volume_down',
-    'Raise Volume': 'volume_up'
+    'Raise Volume': 'volume_up',
+    'Power': 'suspend',
+    'Siri': 'siri'
 }
 
 const keyDesc = {
@@ -97,7 +101,9 @@ const keyDesc = {
     'Backspace': 'Menu',
     'Escape': 'Menu',
     't': 'TV Button',
-    'l': 'Long-press TV Button'
+    'l': 'Long-press TV Button',
+    'z': 'Power Button',
+    's': 'Siri Button'
 }
 function initIPC() {
     ipcRenderer.on('shortcutWin', (event) => {
@@ -356,17 +362,12 @@ async function sendCommand(k, shifted) {
     if (typeof(rcmd) === 'function') rcmd = rcmd(device);
 
     var classkey = rcmd;
-    if (classkey == 'Play') classkey = 'Pause';
     var el = $(`[data-key="${classkey}"]`)
     if (el.length > 0) {
         el.addClass('invert');
         setTimeout(() => {
             el.removeClass('invert');
         }, 500);
-    }
-    if (k == 'Space') {
-        var pptxt = rcmd == "Pause" ? "Play" : "Pause";
-        el.find('.keyText').html(pptxt);
     }
     console.log(`Keydown: ${k}, sending command: ${rcmd} (shifted: ${shifted})`)
     previousKeys.push(rcmd);
@@ -377,6 +378,8 @@ async function sendCommand(k, shifted) {
     if (desc == 'play_pause') desc = "play/pause"
     if (desc == 'Tv') desc = 'TV'
     if (desc == 'LongTv') desc = 'TV long press'
+    if (desc == 'suspend') desc = 'Power'
+    if (desc == 'siri') desc = 'Siri'
     showAndFade(desc);
     if (shifted) {
         ws_sendCommandAction(rcmd, "Hold")

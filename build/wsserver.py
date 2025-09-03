@@ -355,8 +355,8 @@ async def parseRequest(j, websocket):
             await sendCommand(websocket, "command_failed", "not_connected")
             return
             
-        valid_keys = ['play_pause', 'left', 'right', 'down', 'up', 'select', 'menu', 'top_menu', 'home', 'home_hold', 'skip_backward', 'skip_forward', 'volume_up', 'volume_down']
-        no_action_keys = ['volume_up', 'volume_down', 'play_pause', 'home_hold']
+        valid_keys = ['play_pause', 'left', 'right', 'down', 'up', 'select', 'menu', 'top_menu', 'home', 'home_hold', 'skip_backward', 'skip_forward', 'volume_up', 'volume_down', 'suspend', 'wakeup', 'siri']
+        no_action_keys = ['volume_up', 'volume_down', 'play_pause', 'home_hold', 'suspend', 'wakeup', 'siri']
         #taction = InputAction["SingleTap"]
         taction = False
         key = data
